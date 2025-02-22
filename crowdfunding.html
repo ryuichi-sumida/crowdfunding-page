@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowdfunding Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress {
+            height: 20px;
+            background-color: #4CAF50;
+            width: 1%;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            background-color: #008CBA;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Support Our Cause</h1>
+        <p>Target: <strong>$1000</strong></p>
+        <p>Current Amount: <strong id="current-amount">$10</strong></p>
+        <div class="progress-bar">
+            <div class="progress" id="progress" style="width: 1%">1%</div>
+        </div>
+        <button onclick="donate()">Donate $10</button>
+    </div>
+
+    <script>
+        let currentAmount = 10;
+        const targetAmount = 1000;
+        
+        function updateProgress() {
+            let percentage = (currentAmount / targetAmount) * 100;
+            document.getElementById("progress").style.width = percentage + "%";
+            document.getElementById("progress").textContent = Math.round(percentage) + "%";
+            document.getElementById("current-amount").textContent = "$" + currentAmount;
+        }
+        
+        function donate() {
+            currentAmount += 10;
+            if (currentAmount > targetAmount) {
+                currentAmount = targetAmount;
+            }
+            updateProgress();
+        }
+        
+        updateProgress();
+    </script>
+</body>
+</html>
