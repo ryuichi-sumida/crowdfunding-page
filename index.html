@@ -49,34 +49,40 @@
 </head>
 <body>
     <div class="container">
-        <h1>Support Our Cause</h1>
-        <p>Target: <strong>$1000</strong></p>
-        <p>Current Amount: <strong id="current-amount">$10</strong></p>
+        <h1>BAOBAB</h1>
+        <p>目標金額は <strong id="target-amount"></strong></p>
+        <p>現在の支援総額: <strong id="current-amount"></strong></p>
         <div class="progress-bar">
-            <div class="progress" id="progress" style="width: 1%">1%</div>
+            <div class="progress" id="progress">1%</div>
         </div>
-        <button onclick="donate()">Donate $10</button>
+        <button onclick="donate()">Donate</button>
+        <button onclick="instagram()">Instagram</button>
     </div>
 
     <script>
-        let currentAmount = 10;
-        const targetAmount = 1000;
-        
+        // Define target and current amount once
+        let currentAmount = 10000; // Change here if needed
+        const targetAmount = 100000; // Change here if needed
+
         function updateProgress() {
             let percentage = (currentAmount / targetAmount) * 100;
             document.getElementById("progress").style.width = percentage + "%";
             document.getElementById("progress").textContent = Math.round(percentage) + "%";
-            document.getElementById("current-amount").textContent = "$" + currentAmount;
+
+            // Format numbers with commas
+            document.getElementById("current-amount").textContent = "¥" + currentAmount.toLocaleString();
+            document.getElementById("target-amount").textContent = "¥" + targetAmount.toLocaleString();
         }
-        
+
         function donate() {
-            currentAmount += 10;
-            if (currentAmount > targetAmount) {
-                currentAmount = targetAmount;
-            }
-            updateProgress();
+            window.location.href = "https://college.co.jp/user/1821/view"; // Replace with your actual donation page URL
         }
-        
+
+        function instagram() {
+            window.location.href = "https://www.instagram.com/baobab_cambodia/?igshid=YmMyMTA2M2Y%3D"; // Replace with your actual Instagram page URL
+        }
+
+        // Update the UI when the page loads
         updateProgress();
     </script>
 </body>
